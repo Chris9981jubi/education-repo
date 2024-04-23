@@ -1,0 +1,48 @@
+
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+  
+  .form-container {
+    margin-bottom: 20px;
+  }
+  
+  .form-container input[type="text"] {
+    padding: 10px;
+    width: 70%;
+    margin-right: 10px;
+  }
+  
+  .form-container button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .form-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  .subject-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .subject-list li {
+    margin-bottom: 10px;
+  }
+  
+  .schedule {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+  }
+  

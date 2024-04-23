@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import SubjectForm from './components/SubjectForm';
+import SubjectList from './components/SubjectList';
+import Schedule from './components/Schedule';
+import './styles.css';
 
-function App() {
+const App = () => {
+  const [subjects, setSubjects] = useState([]);
+
+  useEffect(() => {
+    const storedSubjects = JSON.parse(localStorage.getItem('subjects'));
+    if (storedSubjects) {
+      setSubjects(storedSubjects);
+    }
+  }, []);
+
+  const addSubject = (subjectName) => {
+    const newSubject = {
+      id: Math.random().toString(),
+      name: subjectName,
+      hours: 0,
+    };
+    setSubjects([...subjects, newSubject]);
+  };
+  useEffect(() => {
+    localStorage.setItem('subjects', JSON.stringify(subjects));
+  }, [subjects]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Education Planner</h1>
+      <SubjectForm addSubject={addSubject} />
+      <SubjectList subjects={subjects} />
+      <Schedule subjects={subjects} />
     </div>
   );
-}
+};
 
 export default App;
